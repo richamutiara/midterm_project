@@ -1,0 +1,33 @@
+{
+  "songs": [
+    {
+      "id": 1,
+      "title": "stry of my life",
+      "artists": ["One Direction"],
+      "url": "https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg",
+      "count": 0
+    },
+    {
+      "id": 2,
+      "title": "stry of my life",
+      "artists": ["One Direction"],
+      "url": "https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg",
+      "count": 2
+    },
+    {
+      "id": 3,
+      "title": "stry of my life",
+      "artists": ["One Direction"],
+      "url": "https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg",
+      "count": 1
+    },
+    {
+      "id": 4,
+      "title": "stry of my life",
+      "artists": ["One Direction"],
+      "url": "https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg",
+      "count": 0
+    }
+  ],
+  "owner": "richa"
+}
