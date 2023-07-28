@@ -1,4 +1,4 @@
-import playlistService from '../../services/playlist/playlist.service.js';
+import playlistService from "../../services/playlist/playlist.service.js";
 
 function getAllSongs(req, res, next) {
   if (req.query.title) {
@@ -8,7 +8,7 @@ function getAllSongs(req, res, next) {
 
   let playlist;
   // if sort query params is count, get all songs sorted by count (descending);
-  if (req.query.sort === 'count') {
+  if (req.query.sort === "count") {
     playlist = playlistService.getAllSongsSortedByCount();
   } else {
     playlist = playlistService.getAllSongs();
@@ -25,7 +25,7 @@ function getSongByTitle(req, res) {
     res.json(selectedSong);
   } catch (error) {
     res.status(404).json({
-      status: 'error',
+      status: "error",
       message: error.message,
     });
   }
@@ -38,7 +38,7 @@ function getSongById(req, res) {
     res.json(song);
   } catch (error) {
     res.status(404).json({
-      status: 'error',
+      status: "error",
       message: error.message,
     });
   }
@@ -48,22 +48,53 @@ function postSong(req, res) {
   const song = req.body;
 
   if (!song) {
-    res.status(400).send('You have not sent a valid song!');
+    res.status(400).send("You have not sent a valid song!");
   }
   // could add better validation here.
 
   try {
     playlistService.postSong(song);
     res.json({
-      status: 'success',
-      message: 'song successfully added',
+      status: "success",
+      message: "song successfully added",
     });
   } catch (error) {
     res.status(409).json({
-      status: 'error',
+      status: "error",
       message: error.message,
     });
   }
 }
 
-export { getAllSongs, postSong, getSongById, getSongByTitle };
+async function postVideo(req, res) {
+  const { title, videoUrl, thumbUrl, uploader } = req.body;
+
+  if (!title || !videoUrl || !thumbUrl || !uploader) {
+    res.status(400).json({
+      status: "error",
+      message: "Bad Request Body",
+    });
+  }
+
+  try {
+    const savedVideo = await playlistService.postVideo(
+      title,
+      videoUrl,
+      thumbUrl,
+      uploader
+    );
+    res.status(201).json({
+      status: "success",
+      message: `Video with id ${savedVideo.id} successfully uploaded.`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+
+  // basic validation
+}
+
+export { getAllSongs, postSong, getSongById, getSongByTitle, postVideo };

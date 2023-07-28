@@ -1,5 +1,6 @@
-import playlist from './json/playlist.json' assert { type: 'json' };
-import { v4 as uuid } from 'uuid';
+import playlist from "../playlist/json/playlist.json" assert { type: "json" };
+import { v4 as uuid } from "uuid";
+import Video from "./model/video.js";
 
 function getAllSongs() {
   return playlist.songs;
@@ -37,4 +38,20 @@ function postSong(song) {
   return song;
 }
 
-export { getAllSongs, getSongById, getSongByTitle, postSong };
+async function postVideo({ title, videoUrl, thumbUrl, uploader }) {
+  try {
+    const videoToSave = new Video({
+      title,
+      videoUrl,
+      thumbUrl,
+      uploader,
+    });
+
+    const savedVideo = await videoToSave.save();
+    return savedVideo;
+  } catch (error) {
+    throw new Error(`Video with title ${title} failed to be uploaded`);
+  }
+}
+
+export { getAllSongs, getSongById, getSongByTitle, postSong, postVideo };
