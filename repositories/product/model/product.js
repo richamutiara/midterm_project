@@ -9,11 +9,11 @@ const productSchema = mongoose.Schema({
     required: true,
   },
   video_id: {
-    type: Schema.type.ObjectId,
-    ref: "Video",
+    type: Schema.Types.ObjectId,
+    ref: "video",
   },
 });
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("product", productSchema);
 
 export default Product;

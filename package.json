@@ -13,5 +13,8 @@
     "mongoose": "^7.4.1",
     "uuid": "^9.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97"
+  }
 }

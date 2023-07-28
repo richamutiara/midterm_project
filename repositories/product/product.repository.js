@@ -1,9 +1,11 @@
-import Product from "./model/product";
+import Product from "./model/product.js";
 
-async function getProductsByVideoID(videoID) {
+async function getProductsByVideoId(videoId) {
   try {
-    const products = await Product.find({ video_id: videoID });
+    return await Product.find({ video_id: videoId }).exec();
   } catch (error) {
-    throw new Error("");
+    throw new Error("Failed to get products by video id.");
   }
 }
+
+export { getProductsByVideoId };

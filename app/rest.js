@@ -1,5 +1,5 @@
 import express from "express";
-import songsRouter from "../routes/songs.route.js";
+import videosRouter from "../routes/videos.route.js";
 import mongoose from "mongoose";
 
 async function connectMongoose() {
@@ -21,7 +21,7 @@ async function startRest() {
     console.log("server listening on port 3000");
   });
 
-  app.use("/songs", songsRouter);
+  app.use("/videos", videosRouter);
 }
 
 export default startRest;
